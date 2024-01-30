@@ -1,0 +1,17 @@
+/* Table.module.css */
+
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  background-color: #D8D2DE;
+}
+
+.leftContainer {
+  width: 72px;
+  height: 100vh;
+  /* background-color: ; */
+  background: #391E5A;
+
+}

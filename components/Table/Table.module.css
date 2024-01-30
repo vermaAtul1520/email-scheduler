@@ -1,26 +1,13 @@
 /* Table.module.css */
 
 .container {
-    padding: 20px;
-    background-color: 'red';
+    /* padding: 20px; */
+    /* background-color: 'red'; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    width: 100%;
   }
-  
-  .searchInput {
-    padding: 10px;
-    margin-right: 10px;
-    width: 200px;
-    margin-bottom: 20px;
-  }
-  
-  .addButton {
-    padding: 10px 20px;
-    cursor: pointer;
-    background-color: #4e60ff;
-    border: none;
-    color: white;
-    margin-bottom: 20px;
-  }
+
   
   .table {
     width: 100%;
@@ -29,7 +16,7 @@
   }
   
   .tableHead {
-    background-color: #e6e6e6;
+    background-color: #D8D2DE;
   }
   
   .th {
@@ -47,8 +34,8 @@
     padding: 5px 10px;
     margin-right: 5px;
     cursor: pointer;
-    background-color: #e4e4e4;
     border: none;
+    background-color: transparent;
   }
   
   .actionButton:hover {
@@ -58,3 +45,10 @@
   .rowHover:hover {
     background-color: #f0f0f0;
   }
+
+.edit {
+  width: 16px;
+  height: 16px;
+  top: 240px;
+  left: 1166px
+}
