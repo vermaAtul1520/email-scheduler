@@ -1,0 +1,60 @@
+/* Table.module.css */
+
+.container {
+    padding: 20px;
+    background-color: 'red';
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .searchInput {
+    padding: 10px;
+    margin-right: 10px;
+    width: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .addButton {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #4e60ff;
+    border: none;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  
+  .tableHead {
+    background-color: #e6e6e6;
+  }
+  
+  .th {
+    padding: 10px;
+    border-bottom: 2px solid #cccccc;
+  }
+  
+  .td {
+    padding: 10px;
+    border-bottom: 1px solid #cccccc;
+    background-color: #ffffff;
+  }
+  
+  .actionButton {
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    background-color: #e4e4e4;
+    border: none;
+  }
+  
+  .actionButton:hover {
+    background-color: #d4d4d4;
+  }
+  
+  .rowHover:hover {
+    background-color: #f0f0f0;
+  }
