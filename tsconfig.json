@@ -16,6 +16,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/schedule/index.js", "pages/api/schedule/[id].js", "utils/dbConnect.js"],
   "exclude": ["node_modules"]
 }

@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.popup {
+  width: 336px;
+  height: fit-content;
+  top: 447px;
+  left: 830px;
+  font-family: poppins;
+  border-radius: 4px;
+  background-color: white;
+  position: absolute;
+  z-index: 100;
+  top: 9%;
+  left: 69%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  line-height: 1;
+}
+
+.popupDaySelector {
+  display: flex;
+  justify-content: space-evenly;
+  /* background-color: #391e5a; */
+  width: 65%;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #391e5a;
+  color: white;
+}
+.popupDaySelector div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  border: 2px solid lightgrey;
+  border-radius: 50%;
+}
+.popupInput {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.popupInput input {
+  width: 60%;
+  height: 1.5rem;
+  padding: 2px 10px;
+}
+.popupInput select {
+  width: 67%;
+  height: 2rem;
+  padding: 2px 10px;
+}
+.popupInput textarea {
+  padding: 10px;
+  width: 60%;
+  resize: none;
+}
+.header {
+  /* font-family: Nunito Sans; */
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  /* line-height: 1; */
+}
+.popupHeader {
+  font-weight: 500;
+  font-size: 17px;
+  margin-bottom: 20px !important;
+  display: block;
+  margin: 5px;
+}
+.btnContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.cancleBtn {
+  color: black;
+  padding: 10px;
+  background-color: #ebe8ef;
+  width: 88px;
+  /* height: 32px; */
+  top: 452px;
+  left: 1202px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.doneBtn {
+  padding: 10px;
+  color: white;
+  background-color: #391e5a;
+  margin-left: 10px;
+  width: 88px;
+  /* height: 32px; */
+  top: 452px;
+  left: 1202px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.doneBtn:hover {
+  opacity: 0.8;
+}
+
+.cancleBtn:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 750px) {
+  .popup {
+    left: 12%;
+  }
+}
