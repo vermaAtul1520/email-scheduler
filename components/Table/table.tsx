@@ -45,7 +45,7 @@ const Table = () => {
   // }
 
   async function deleteData(id) {
-    const data = await fetch(`http://localhost:3000/api/schedule/${id}`, {
+    const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URI}/schedule/${id}`, {
       method: "Delete", // Specify the request method
       headers: {
         "Content-Type": "application/json",

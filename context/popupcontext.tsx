@@ -75,7 +75,8 @@ const PopupProvider: React.FC<PopupProviderProps> = ({ children }) => {
   };
 
   async function getData() {
-    const data = await fetch(`http://localhost:3000/api/schedule`, {
+    console.log("-==============>>>>",`${process.env.NEXT_PUBLIC_BASE_URI}/schedule`)
+    const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URI}/schedule`, {
       method: "GET", // Specify the request method
       headers: {
         "Content-Type": "application/json",

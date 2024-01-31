@@ -34,7 +34,7 @@ const Popup: React.FC = () => {
     }
     console.log("========>>>>>",formData,id)
     try {
-      const response = await fetch(`http://localhost:3000/api/schedule/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URI}/schedule/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
