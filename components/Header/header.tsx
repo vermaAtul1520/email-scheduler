@@ -4,7 +4,7 @@ import { FaSearch } from "react-icons/fa";
 import { CiCirclePlus } from "react-icons/ci";
 import { usePopupContext } from "@/context/popupcontext"
 
-const header = () => {
+const Header = () => {
     const { openPopup } = usePopupContext();
     
     return (
@@ -29,4 +29,4 @@ const header = () => {
     )
 }
 
-export default header
+export default Header
