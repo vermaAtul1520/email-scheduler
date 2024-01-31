@@ -12,6 +12,7 @@ A full-stack email scheduler application built with Next.js, TypeScript, and Mon
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
+- [API Endpoints](#api-endpoints)
 - [Project Structure](#project-structure)
 - [Tech Stack](#tech-stack)
 
@@ -68,6 +69,16 @@ npm run dev
 2. Open your browser and go to [http://localhost:3000](http://localhost:3000)
 
 3. Explore the email scheduler application.
+
+## API Endpoints
+The backend of the application exposes the following API endpoints:
+
+- `GET /api/schedules`: Returns a list of all schedules.
+- `GET /api/schedules?title=sampletitle`: Returns a filtered list based on the title.
+- `GET /api/schedules/:id`: Returns specific schedule details.
+- `PATCH /api/schedules/:id`: Updates a specific schedule.
+- `DELETE /api/schedules/:id`: Deletes a specific schedule.
+- `POST /api/schedules`: Creates a new schedule.
 
 ## Project Structure
 
