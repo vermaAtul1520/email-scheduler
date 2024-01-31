@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
+import React, { useState, ChangeEvent, FormEvent, useEffect, useRef } from "react";
 import styles from "./Popup.module.css";
 import { usePopupContext } from "@/context/popupcontext";
 
@@ -14,40 +14,78 @@ interface FormData {
 const Popup: React.FC = () => {
   const { closePopup, popupData,getData } = usePopupContext();
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const formVaildity = useRef<boolean>(false);
 
   const [formData, setFormData] = useState<FormData>({
     title: popupData.title || "",
     description: popupData.description || "",
     subject: popupData.subject || "",
-    frequency: popupData.frequency || "",
+    frequency: popupData.frequency || "Daily",
     repeat: popupData.repeat || "",
     time: popupData.time || "",
   });
 
+  useEffect(()=>{
+     let keys = Object.keys(popupData);
+     formVaildity.current=true;
+     if(formData.frequency==='Daily'){
+      keys?.forEach((val)=>{
+        if(formData?.[val]?.length === 0 && formData?.[val]!== 'repeat'){
+          formVaildity.current=false;
+        }
+      })
+     }
+     else{
+      keys?.forEach((val)=>{
+        if(formData?.[val]?.length === 0){
+          formVaildity.current=false;
+        }
+      })
+     }
+  },[formData])
+
 
   async function updateData(id: string) {
-    if (formData.frequency === "daily") {
+    if (formData.frequency === "Daily") {
       setFormData((prevData) => ({
         ...prevData,
         ["repeat"]: "",
       }));
     }
-    console.log("========>>>>>",formData,id)
+    
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URI}/schedule/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: formData.title || "",
-          description: formData.description || "",
-          subject: formData.subject || "",
-          frequency: formData.frequency || "",
-          repeat: formData.repeat || "",
-          time: formData.time || "",
-        }),
-      });
+      if (Object.keys(popupData)?.length) {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URI}/schedule/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: formData.title || "",
+            description: formData.description || "",
+            subject: formData.subject || "",
+            frequency: formData.frequency || "",
+            repeat: formData.repeat || "",
+            time: formData.time || "",
+          }),
+        });
+      }
+      else {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URI}/schedule`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: formData.title || "",
+            description: formData.description || "",
+            subject: formData.subject || "",
+            frequency: formData.frequency || "",
+            repeat: formData.repeat || "",
+            time: formData.time || "",
+          }),
+        });
+      }
       getData();
       // Handle response if needed
     } catch (error) {
@@ -57,8 +95,6 @@ const Popup: React.FC = () => {
 
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // Your form submission logic
-    console.log("Form submitted:", formData);
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -78,7 +114,7 @@ const Popup: React.FC = () => {
   };
 
   return (
-    <div className={styles.popup}>
+    <div className={Object.keys(popupData)?.length ? styles.popupAdd : styles.popup}>
       <span className={styles.popupHeader}>
         {Object.keys(popupData)?.length ? "Edit Schedule" : "Add Schedule"}
       </span>
@@ -124,15 +160,15 @@ const Popup: React.FC = () => {
               value={formData.frequency}
               onChange={handleInputChange}
             >
-              <option value="weekly" selected>
+              <option value="Daily">Daily</option>
+              <option value="Weekly">
                 Weekly
               </option>
-              <option value="daily">Daily</option>
-              <option value="monthly">Monthly</option>
+              <option value="Monthly">Monthly</option>
             </select>
           </label>
           <br />
-          {formData.frequency == "weekly" && (
+          {formData.frequency == "Weekly" && (
             <label className={styles.popupInput}>
               Repeat
               <label className={styles.popupDaySelector}>
@@ -143,7 +179,6 @@ const Popup: React.FC = () => {
                     value={e}
                     onClick={() => {
                       handleDayChange(e);
-                      // console.log(e, formData);
                     }}
                     className={formData.repeat == e && `${styles.active}`}
                   >
@@ -153,7 +188,7 @@ const Popup: React.FC = () => {
               </label>
             </label>
           )}
-          {formData.frequency == "monthly" && (
+          {formData.frequency == "Monthly" && (
             <label className={styles.popupInput}>
               Repeat
               <select

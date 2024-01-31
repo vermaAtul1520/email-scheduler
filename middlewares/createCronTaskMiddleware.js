@@ -6,7 +6,6 @@ function generateCron(req, res, next) {
     const scheduleString = generateCronString(frequency, repeat, time);
     req.body.cronExpression = cronExpression;
     req.body.schedule = scheduleString;
-    console.log("object============",cronExpression,scheduleString)
     req.body
     next();
 }
