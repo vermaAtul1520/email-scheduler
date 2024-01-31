@@ -13,7 +13,8 @@ export async function createCronTask(data) {
 export async function getAllCronTasks(filter = {}) {
     const db = await connectToDatabase();
     const cronTasks = db.collection('crontasks');
-    return cronTasks.find(filter).toArray();
+    const partialMatchFilter = filter.title ? { title: { $regex: filter.title, $options: 'i' } } : {};
+    return cronTasks.find(partialMatchFilter).toArray();
 }
 
 
