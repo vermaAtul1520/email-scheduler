@@ -3,20 +3,31 @@
 .popup {
   width: 336px;
   height: fit-content;
-  top: 447px;
-  left: 830px;
-  font-family: poppins;
   border-radius: 4px;
   background-color: white;
   position: absolute;
   z-index: 100;
   top: 9%;
-  left: 69%;
+  left: 65%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 10px 20px;
   line-height: 1;
 }
 
+
+.popupAdd {
+  width: 336px;
+  height: fit-content;
+  border-radius: 4px;
+  background-color: white;
+  position: absolute;
+  z-index: 100;
+  top: 15%;
+  left: 45%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  line-height: 1;
+}
 .popupDaySelector {
   display: flex;
   justify-content: space-evenly;
@@ -61,7 +72,7 @@
   resize: none;
 }
 .Header {
-  /* font-family: Nunito Sans; */
+  font-family: Nunito Sans;
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;

@@ -9,7 +9,8 @@ interface PopupContextType {
   popupData: object;
   setpopup: (data: {}) => void;
   getData: ()=> void;
-  data:[]
+  data:[];
+  displaySearch: ()=>{}
 }
 
 interface popupData {
@@ -48,14 +49,7 @@ interface popupData {
 const PopupProvider: React.FC<PopupProviderProps> = ({ children }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [data, setData] = useState <[]>([]);
-  const [popupData, setPopupData] = useState<popupData>({
-    title:"",
-    description: "",
-    subject: "",
-    frequency: "",
-    repeat: "",
-    time: ""
-  });
+  const [popupData, setPopupData] = useState<popupData>({});
 
   const openPopup = () => {
     setIsPopupOpen(true);
@@ -75,8 +69,18 @@ const PopupProvider: React.FC<PopupProviderProps> = ({ children }) => {
   };
 
   async function getData() {
-    console.log("-==============>>>>",`${process.env.NEXT_PUBLIC_BASE_URI}/schedule`)
     const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URI}/schedule`, {
+      method: "GET", // Specify the request method
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    setData(await data.json());
+  }
+
+  async function displaySearch(val:string) {
+    const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URI}/schedule?title=${val}`, {
       method: "GET", // Specify the request method
       headers: {
         "Content-Type": "application/json",
@@ -94,7 +98,8 @@ const PopupProvider: React.FC<PopupProviderProps> = ({ children }) => {
     popupData,
     setpopup,
     getData,
-    data
+    data,
+    displaySearch
   };
 
   return (
