@@ -172,7 +172,7 @@ const Popup: React.FC = () => {
             <label className={styles.popupInput}>
               Repeat
               <label className={styles.popupDaySelector}>
-                {days.map((e,idx) => (
+                {days?.map((e,idx) => (
                   <div
                   key={idx}
                     // name="repeat"

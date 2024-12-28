@@ -17,9 +17,9 @@ function generateCronExpression(frequency, repeat, time) {
 
         case 'Weekly':
             // For Weekly frequency, generate cron expression for selected weekdays
-            const selectedWeekdays = repeat.split(',').map(day => day.trim());
+            const selectedWeekdays = repeat.split(',')?.map(day => day.trim());
             const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            const weekdayIndices = selectedWeekdays.map(day => daysOfWeek.indexOf(day));
+            const weekdayIndices = selectedWeekdays?.map(day => daysOfWeek.indexOf(day));
             const weekdayCron = weekdayIndices.join(',');
             cronExpression = `${minutes} ${hours} * * ${weekdayCron}`; // Run every selected weekday at the specified time
             break;
